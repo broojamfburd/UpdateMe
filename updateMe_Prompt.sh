@@ -30,7 +30,7 @@ if [[ $zoomCheck = "STOPPED" ]]; then
 	echo "Zoom not running... Proceed."
 
 	result=$(osascript <<EOD
-	set result to button returned of (display dialog "Your Mac is out of date. Please update now." with title "Your Mac is out of date!" with icon posix file "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericNetworkIcon.icns" buttons {"Update Now","Later"} default button 1)
+	set result to button returned of (display dialog "Your Mac is out of date. \n\nPlease update now!" with title "Your Mac is out of date!" with icon posix file "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericNetworkIcon.icns" buttons {"Update Now","Later"} default button 1)
 EOD
 )
 
@@ -38,6 +38,7 @@ EOD
 	if [[ $result = "Update Now" ]]; then
 		echo "User Chose Update. Opening System Preferences."
 		open x-apple.systempreferences:com.apple.Software-Update-Settings.extension
+		
 	else	
 		echo "User chose to defer. Will try again in 12 hours."
 		
